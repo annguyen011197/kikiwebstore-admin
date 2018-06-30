@@ -5,6 +5,7 @@ import Login from './Views/Login'
 import cookie from 'react-cookies'
 import $ from 'jquery'
 import { Modal } from '@material-ui/core';
+import util from './Others/Utils'
 
 class App extends Component {
   constructor(props) {
@@ -19,7 +20,7 @@ class App extends Component {
     $.ajax({
       async:false,
       type: 'get',
-      url: 'http://localhost:3000/admin/islogedin',
+      url: util.serverURL+'/admin/islogedin',
       xhrFields: {
         withCredentials: true
       }

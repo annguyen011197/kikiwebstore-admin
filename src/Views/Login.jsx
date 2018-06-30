@@ -11,10 +11,11 @@ import {
 } from '@material-ui/core'
 import { AccountCircle, Lock, Clear } from '@material-ui/icons';
 import $ from 'jquery'
+import util from '../Others/Utils'
 const style = {
     background: {
         position: 'fixed',
-        backgroundImage: `url(${"/background.webp"})`,
+        backgroundImage: `url(${"https://kikibookstore.herokuapp.com/media/background.webp"})`,
         backgroundSize: 'cover',
         height: '100vh',
         width: '100vw',
@@ -48,23 +49,6 @@ class LogIn extends Component {
     handleClear = prop => event => {
         this.setState({ [prop]: '' })
     }
-    Test() {
-        $.ajax({
-            type:'get',
-            url:'http://localhost:3000/api/books',
-            data:{
-                offset:1,
-                limit:10
-            },
-            xhrFields: {
-                withCredentials: true
-           }
-        }).done(res=>{
-            console.log(res)
-        }).fail(err=>{
-            console.log(err)
-        })
-    }
     submitForm = () => {
         if (this.state.password == '') {
             this.setState({
@@ -85,7 +69,7 @@ class LogIn extends Component {
             }
             $.ajax({
                 type: "post",
-                url: "http://localhost:3000/users/login",
+                url: util.serverURL+"/users/login",
                 data: data,
                 dataType: "json",
                 xhrFields: {
