@@ -11,7 +11,9 @@ import {
     TablePagination,
     Divider,
     CircularProgress,
-    IconButton
+    IconButton,
+    Switch,
+    Typography
  } from '@material-ui/core';
 import data from '../Others/Data'
 import ModalOrder from '../Components/ModalOrder'
@@ -35,7 +37,8 @@ export default class Order extends Component {
             offset:1,
             limit:5,
             count:0,
-            selected:null
+            selected:null,
+            type : false
         }
         this.ModalOrder = React.createRef()
     }
@@ -53,7 +56,7 @@ export default class Order extends Component {
                 <CustomTableCell >{n.size}</CustomTableCell>
                 <CustomTableCell >{n.total}</CustomTableCell>
                 <CustomTableCell >
-                  <IconButton onClick={() => {
+                  <IconButton disabled={this.state.type} onClick={() => {
                    this.setState({
                        loading:true
                    },()=>data.AcceptCart(n._id).then((result) => {
@@ -79,7 +82,7 @@ export default class Order extends Component {
       }
 
       handleData(offset, limit) {
-       data.GetCartList(offset,limit)
+       data.GetCartList(offset,limit,this.state.type)
        .then((result) => {
         this.setState({
             listorder: result,
@@ -103,9 +106,26 @@ export default class Order extends Component {
         )
       }
   render() {
+    console.log(this.state)
     const { offset, limit, listorder, count, loading } = this.state
     return (
         <Paper>
+          <div style={{
+            display:'flex',
+            alignItems:'center',
+            alignContent:'center'
+          }}>
+          <Switch
+              checked={this.state.type}
+              onChange={(event)=>{
+                this.setState({
+                  type: !this.state.type,
+                  loading:true
+                },this.handleData(offset,limit))
+              }}
+            />
+            <Typography variant="subheading">Delivered</Typography>
+          </div>
         <Table>
           <TableHead>
             <TableRow>

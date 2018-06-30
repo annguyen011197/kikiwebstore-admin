@@ -8,6 +8,8 @@ module.exports.getRandomColor = () => {
 }
 
 module.exports.serverURL = 'https://kikibookstore.herokuapp.com'
+//module.exports.serverURL = 'http://localhost:3000'
+
 module.exports.getBase64Img = (file) => new Promise((resolve, reject) => {
     console.log(file)
     const reader = new FileReader()

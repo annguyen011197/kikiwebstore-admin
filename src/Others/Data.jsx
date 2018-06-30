@@ -76,7 +76,7 @@ const data = {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: "post",
-                url:`${util.serverURL}/api/addEvent`,
+                url: `${util.serverURL}/api/addEvent`,
                 data: value,
                 dataType: "json"
             })
@@ -84,14 +84,15 @@ const data = {
                 .fail(reject)
         })
     },
-    GetCartList: (offset,limit)=>{
+    GetCartList: (offset, limit, type) => {
+        let typename = type ? "Delivered" : "accept"
         return new Promise((resolve, reject) => {
-            $.get(`${util.serverURL}/api/cartlist?offset=${offset}&limit=${limit}`)
+            $.get(`${util.serverURL}/api/cartlist?offset=${offset}&limit=${limit}&type=${typename}`)
                 .done(resolve)
                 .fail(reject)
         })
     },
-    AcceptCart: (id)=>{
+    AcceptCart: (id) => {
         return new Promise((resolve, reject) => {
             $.ajax({
                 type: 'get',
@@ -105,7 +106,35 @@ const data = {
                 reject(err)
             })
         })
-        
+
+    },
+    CreateAccount: (val) => {
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: "post",
+                url: `${util.serverURL}/users/signup`,
+                data: val,
+                dataType: "json",
+                xhrFields: {
+                    withCredentials: true
+                }
+            })
+                .done(resolve)
+                .fail(reject)
+        })
+    },
+    Logout:(val)=>{
+        return new Promise((resolve, reject) => {
+            $.ajax({
+                type: 'get',
+                url: `${util.serverURL}/users/logout`,
+                xhrFields: {
+                    withCredentials: true
+                }
+            })
+                .done(resolve)
+                .fail(reject)
+        })
     }
 }
 

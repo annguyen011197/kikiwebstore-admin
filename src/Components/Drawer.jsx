@@ -73,8 +73,8 @@ class DrawerMenu extends Component {
           <ListItemText primary="admin" />
         </ListItem>
         <Divider />
-        <ListItem >
-          <ListItemText primary="Dashboard" />
+        <ListItem button component={props => <Link to="/user" {...props} />}>
+          <ListItemText primary="Users" />
         </ListItem>
         <ListItem button component={props => <Link to="/oder" {...props} />}>
           <ListItemText primary="Order" />

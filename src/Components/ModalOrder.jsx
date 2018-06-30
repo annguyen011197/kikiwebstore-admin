@@ -35,7 +35,6 @@ export default class componentName extends Component {
     }
     render() {
         const { order } = this.props
-        console.log(order)
         return (
             <Dialog
                 open={this.state.open}

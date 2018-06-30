@@ -56,37 +56,17 @@ export default class EventForm extends Component {
         if (this.state.image) {
             value.image = this.state.image
         }
-        // this.setState({
-        //     loading: true
-        // }, () => data.PostEvent(data)
-        //     .then((result) => {
-        //         this.setState({
-        //             loading:false,
-        //             snackbaropen:true,
-        //             message:'Success'
-        //         })
-        //     }).catch((err) => {
-        //         this.setState({
-        //             loading:false,
-        //             snackbaropen:true,
-        //             message:'Erorr'
-        //         })
-        //     }))
         this.setState({
             loading: true
-        }, () => data.PostEvent(value)
+        }, () => data.CreateAccount(value)
             .then((result) => {
                 this.setState({
                     loading: false,
-                    snackbaropen: true,
-                    message: 'Success'
                 })
             }).catch((err) => {
                 this.setState({
-                    loading: false,
-                    snackbaropen: true,
-                    message: 'Erorr'
-                })
+                    loading: false
+                },()=>alert('Error'))
             }))
     }
     renderMain() {
