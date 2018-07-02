@@ -24,11 +24,7 @@ ___
  - Members:
  
 |Student Code|Full Name | Link|
-
 |-----|:-----:|----:|
-
 | 1512020 | Nguyễn Trần Minh Ân |[Facebook](https://www.facebook.com/an.nguyen.11197) [Github](https://github.com/annguyen011197)|
-
 | 1512003 | Lê Tuấn Anh |[Facebook](https://www.facebook.com/letuananh.it) [Github](https://github.com/letuananh035)
-
 | 1512023 | Diệu Ngọc Bảo |[Facebook](https://www.facebook.com/dieungocbao) [Github](https://github.com/dieungocbao)
